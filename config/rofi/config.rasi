@@ -1,0 +1,13 @@
+configuration {
+    font: "UbuntuMono Nerd Font 14";
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "$";
+    display-window: "";
+    display-combi:  "";
+    show-icons:     true;
+
+  modi: "drun,run,window,ssh";
+}
+
+@theme "/home/nwpm/.config/rofi/themes/vscode.rasi"

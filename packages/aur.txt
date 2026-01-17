@@ -1,0 +1,14 @@
+betterlockscreen
+digimend-kernel-drivers-dkms
+gtk2
+gtkd
+i3lock-color
+i3lock-color-debug
+neofetch
+nvidia-dkms
+sddm-sugar-candy-git
+ttf-jetbrains-mono
+xkb-switch
+xkb-switch-debug
+yay-bin
+yay-bin-debug

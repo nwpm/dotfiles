@@ -1,0 +1,78 @@
+* {
+  /* VS Code + Materia */
+  bg0    : #2A2A2A;      /* Background */
+  bg1    : #333333;      /* Inputbar */
+  bg2    : #3d3d3d;      /* Selected element background */
+  fg0    : #CCCCCC;      /* Main text */
+  fg1    : #888888;      /* Placeholder */
+  accent : #007ACC;      /* VS Code blue */
+  urgent : #F48771;      /* Errors */
+
+  background-color : transparent;
+  text-color       : @fg0;
+
+  margin  : 0;
+  padding : 0;
+  spacing : 0;
+  font: "UbuntuMono Nerd Font 12";
+}
+
+window {
+  location : center;
+  width    : 640px;
+  height   : 480px;
+
+  background-color : @bg0;
+  border           : 2px;
+  border-color     : @accent;
+  border-radius    : 6px;
+}
+
+mainbox {
+  padding : 20px;
+  spacing : 15px;
+}
+
+inputbar {
+  padding          : 12px;
+  spacing          : 10px;
+  children         : [ prompt, entry ];
+  background-color : @bg1;
+  border-radius    : 4px;
+}
+
+prompt {
+  text-color: @accent;
+  font: "UbuntuMono Nerd Font 14";
+}
+
+entry {
+  placeholder       : "Search apps...";
+  placeholder-color : @fg1;
+}
+
+listview {
+  columns       : 1;
+  spacing       : 4px;
+  fixed-height  : true;
+}
+
+element {
+  padding       : 10px;
+  border-radius : 4px;
+}
+
+element selected {
+  background-color : @accent;
+  text-color       : #ffffff;
+}
+
+element-icon {
+  size: 24px;
+  margin: 0 10px 0 0;
+}
+
+element-text {
+  text-color: inherit;
+  vertical-align: 0.5;
+}
