@@ -1,0 +1,21 @@
+@define-color selected_bg_color #007ACC;
+@define-color selected_fg_color #ffffff;
+@define-color theme_bg_color #2A2A2A;
+@define-color theme_fg_color #CCCCCC;
+
+entry selection, textview selection {
+    background-color: #007ACC;
+    color: #ffffff;
+}
+
+progressbar progress {
+    background-color: #007ACC;
+}
+
+switch:checked slider {
+    background-color: #007ACC;
+}
+
+button:hover {
+    background-image: image(lighter(#3A3A3A));
+}

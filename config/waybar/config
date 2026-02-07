@@ -1,0 +1,92 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 4,
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-right": [
+        "network", 
+        "disk", 
+        "pulseaudio", 
+        "memory", 
+        "cpu", 
+        "temperature#cpu", 
+        "temperature#gpu", 
+        "custom/language",
+        "tray", 
+        "clock"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate"
+    },
+
+    "disk": {
+        "interval": 25,
+        "format": "<span color='#007ACC'>DISK:</span> {free} / {total}",
+        "path": "/"
+    },
+
+    "pulseaudio": {
+        "format": "<span color='#007ACC'>VOL</span> {volume}%",
+        "format-muted": "<span color='#666666'>MUTED</span>",
+        "on-click": "pavucontrol"
+    },
+
+    "memory": {
+        "interval": 2,
+        "format": "<span color='#007ACC'>RAM:</span> {used:0.1f}G / {total:0.1f}G"
+    },
+
+    "cpu": {
+        "interval": 2,
+        "format": "<span color='#007ACC'>CPU:</span> {usage}%"
+    },
+
+    "temperature#cpu": {
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "format": "<span color='#007ACC'>TCPU:</span> {temperatureC}°C"
+    },
+
+    "temperature#gpu": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "format": "<span color='#007ACC'>TGPU:</span> {temperatureC}°C"
+    },
+
+    "network": {
+        "interval": 1,
+        "format-wifi": "<span color='#007ACC'>NET ({essid} {signalStrength}%):</span> 󰇚 {bandwidthDownBytes} | 󰕒 {bandwidthUpBytes}",
+        "format-ethernet": "<span color='#007ACC'>NET ({ifname}):</span> 󰇚 {bandwidthDownBytes} | 󰕒 {bandwidthUpBytes}",
+        "format-disconnected": "<span color='#F48771'>OFFLINE</span>",
+        "tooltip-format": "{ifname} via {gwaddr}\nIP: {ipaddr}\nS: {bandwidthDownBytes} U: {bandwidthUpBytes}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "network": {
+        "interval": 1,
+        "format-wifi": "<span color='#007ACC'>NET:</span> 󰇚 {bandwidthDownBytes} | 󰕒 {bandwidthUpBytes}",
+        "format-ethernet": "<span color='#007ACC'>NET:</span> 󰇚 {bandwidthDownBytes} | 󰕒 {bandwidthUpBytes}",
+        "format-disconnected": "<span color='#F48771'>OFFLINE</span>",
+        "tooltip-format": "{essid} {ifname} via {gwaddr}",
+
+    },
+
+    "custom/language": {
+        "exec": "~/.config/waybar/scripts/keyboard.sh",
+        "interval": 1,
+        "format": "<span color='#007ACC'>LANG:</span> {}",
+        "on-click": "hyprctl switchxkblayout next"
+    },
+
+    "tray": {
+        "spacing": 10,
+        "icon-size": 16,
+        "show-passive-items": true
+    },
+
+    "clock": {
+        "format": "<span color='#9CDCFE'>{:%A, %d %B %Y %H:%M:%S}</span>",
+        "interval": 1
+    }
+}
