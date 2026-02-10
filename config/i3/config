@@ -4,7 +4,7 @@ set $mod Mod4
 exec --no-startup-id autorandr --load two_mon_layout
 exec --no-startup-id setxkbmap -layout us,ru -option grp:ctrl_alt_toggle
 exec --no-startup-id feh --bg-scale ~/Pictures/wallhaven-0q6j57.jpg
-exec --no-startup-id ~/.config/polybar/launch.zsh
+exec --no-startup-id ~/dotfiles/bin/polybar/launch.zsh
 exec --no-startup-id xfsettingsd
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id ~/NekoRay/nekoray-4.0.1-2024-12-12-linux64/nekoray/launcher
@@ -20,8 +20,8 @@ font pango:UbuntuMono Nerd Font 18
 exec --no-startup-id dex --autostart --environment i3
 
 # Lock screen
-bindsym $mod+Shift+b exec ~/.local/bin/lock.sh
-exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.local/bin/lock.sh
+bindsym $mod+Shift+b exec ~/dotfiles/bin/lock.sh
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/dotfiles/bin/lock.sh
 
 # Network applet
 exec --no-startup-id nm-applet
@@ -47,7 +47,7 @@ bindsym $mod+Shift+q kill
 
 # Rofi exec
 bindsym $mod+m exec rofi -show drun
-bindsym $mod+q exec --no-startup-id ~/.config/rofi/scripts/powermenu.zsh
+bindsym $mod+q exec --no-startup-id ~/dotfiles/bin/rofi/scripts/powermenu.zsh
 
 # Change focus
 bindsym $mod+h focus left
