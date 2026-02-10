@@ -1,0 +1,27 @@
+[colors.primary]
+background = '#000000'
+foreground = '#eeeeee'
+
+[colors.cursor]
+text = '#000000'
+cursor = '#70e1e1'
+
+[colors.normal]
+black   = '#000000' # Глубокий черный
+red     = '#ff4d4d'
+green   = '#98e024'
+yellow  = '#f0e64a'
+blue    = '#5d81ff'
+magenta = '#e170e1'
+cyan    = '#70e1e1'
+white   = '#d0d0d0'
+
+[colors.bright]
+black   = '#404040' # Светло-серый для читаемости "яркого черного"
+red     = '#ff6b6b'
+green   = '#adff2f'
+yellow  = '#ffff00'
+blue    = '#7a9bff'
+magenta = '#ff77ff'
+cyan    = '#a0fcfc'
+white   = '#ffffff'

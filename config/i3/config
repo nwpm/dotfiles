@@ -1,7 +1,7 @@
 set $mod Mod4
 
 # Autolaunch
-exec --no-startup-id autorandr --change
+exec --no-startup-id autorandr --load two_mon_layout
 exec --no-startup-id setxkbmap -layout us,ru -option grp:ctrl_alt_toggle
 exec --no-startup-id feh --bg-scale ~/Pictures/wallhaven-0q6j57.jpg
 exec --no-startup-id ~/.config/polybar/launch.zsh
@@ -67,7 +67,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+b split h
 
 # Split in vertical orientation
 bindsym $mod+v split v
