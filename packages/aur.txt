@@ -7,7 +7,6 @@ i3lock-color-debug
 neofetch
 nvidia-dkms
 sddm-sugar-candy-git
-ttf-jetbrains-mono
 xkb-switch
 xkb-switch-debug
 yay-bin
