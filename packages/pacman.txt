@@ -2,11 +2,9 @@ alacritty
 amd-ucode
 base
 base-devel
-bridge-utils
 btop
 clang
 cmake
-digimend-kernel-drivers-dkms
 dkms
 dmidecode
 dnsmasq
@@ -31,6 +29,7 @@ jq
 less
 libguestfs
 libpulse
+libvirt
 linux
 linux-firmware
 linux-headers
@@ -83,6 +82,7 @@ udisks2
 unzip
 v2ray
 valgrind
+vde2
 vim
 virt-manager
 virt-viewer
@@ -93,7 +93,6 @@ wireless_tools
 wireplumber
 xclip
 xdg-utils
-xkb-switch
 xorg-xinit
 xorg-xrandr
 xorg-xsetroot

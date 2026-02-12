@@ -2,7 +2,7 @@ set $mod Mod4
 
 # Autolaunch
 exec --no-startup-id autorandr --load two_mon_layout
-exec --no-startup-id setxkbmap -layout us,ru -option grp:ctrl_alt_toggle
+exec --no-startup-id setxkbmap -layout us,ru -option grp:shift_alt_toggle
 exec --no-startup-id feh --bg-scale ~/Pictures/wallhaven-0q6j57.jpg
 exec --no-startup-id ~/dotfiles/bin/polybar/launch.zsh
 exec --no-startup-id xfsettingsd
@@ -20,8 +20,8 @@ font pango:UbuntuMono Nerd Font 18
 exec --no-startup-id dex --autostart --environment i3
 
 # Lock screen
-bindsym $mod+Shift+b exec ~/dotfiles/bin/lock.sh
-exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/dotfiles/bin/lock.sh
+bindsym $mod+Shift+b exec ~/dotfiles/bin/lock.zsh
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/dotfiles/bin/lock.zsh
 
 # Network applet
 exec --no-startup-id nm-applet
@@ -47,7 +47,7 @@ bindsym $mod+Shift+q kill
 
 # Rofi exec
 bindsym $mod+m exec rofi -show drun
-bindsym $mod+q exec --no-startup-id ~/dotfiles/bin/rofi/scripts/powermenu.zsh
+bindsym $mod+p exec --no-startup-id ~/dotfiles/bin/rofi/powermenu.zsh
 
 # Change focus
 bindsym $mod+h focus left

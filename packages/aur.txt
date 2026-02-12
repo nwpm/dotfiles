@@ -6,8 +6,6 @@ i3lock-color
 i3lock-color-debug
 neofetch
 nvidia-dkms
-sddm-sugar-candy-git
+sddm-sugar-candy
 xkb-switch
 xkb-switch-debug
-yay-bin
-yay-bin-debug

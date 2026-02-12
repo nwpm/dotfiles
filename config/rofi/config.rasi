@@ -10,4 +10,4 @@ configuration {
   modi: "drun,run,window,ssh";
 }
 
-@theme "/home/nwpm/.config/rofi/themes/vscode.rasi"
+@theme "~/dotfiles/config/rofi/themes/vscode.rasi"

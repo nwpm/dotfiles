@@ -3,7 +3,6 @@
 choice=$(echo -e " Shutdown\n Reboot\n Suspend\n Logout" | $ROFI_CMD -p "Power:")
 [[ -z "$choice" ]] && exit
 
-# Удаляем иконку перед сравнением
 choice=$(echo "$choice" | sed 's/^[^ ]* //')
 
 confirm=$(echo -e "No\nYes" | $ROFI_CMD -p "Really $choice?")

@@ -1,50 +1,62 @@
-#!/usr/bin/env bash
+#!/bin/sh
 set -e
 
-ROOT_DIR="$(cd "$(dirname "$0")" && pwd)"
+echo "Start setting dotfiles"
+echo
+
+DOT_DIR=$(pwd)
 
 install_packages() {
-    echo "Install pacman packages..."
-    sudo pacman -Syu --needed - < "$ROOT_DIR/packages/pacman.txt"
+    echo "====> Install pacman packages..."
+    sudo pacman -Syu --needed - < "$DOT_DIR/packages/pacman.txt"
 }
 
 install_aur() {
-    echo "Install AUR packages..."
-    command -v yay >/dev/null || git clone https://aur.archlinux.org/yay.git /tmp/yay && (cd /tmp/yay && makepkg -si)
-    yay -S --needed - < "$ROOT_DIR/packages/aur.txt"
+    echo "====> Install AUR packages..."
+    echo "====> Install yay..."
+    git clone https://aur.archlinux.org/yay.git /tmp/yay && (cd /tmp/yay && makepkg -si)
+    yay -S --needed - < "$DOT_DIR/packages/aur.txt"
+}
+
+change_shell(){
+  echo "====> Change default shell to zsh..."
+  sudo chsh -s /bin/zsh $(whoami)
+}
+
+setting_sddm_theme(){
+  echo "====> Set up sddm theme..."
+  sudo mkdir -p /etc/sddm.conf.d
+  ln -sf "$DOT_DIR/system/sddm/sddm.conf" "/etc/sddm.conf.d/"
+}
+
+add_user_in_groups(){
+  echo "====> Add user in groups..."
+  sudo usermod -aG libvirt $(whoami)
 }
 
 link_configs() {
-    echo "Link configs..."
-    for dir in "$ROOT_DIR/config/"*; do
+    echo "====> Link configs..."
+    for dir in "./config/"*; do
         name=$(basename "$dir")
         ln -sf "$dir" "$HOME/.config/$name"
     done
 }
 
-install_scripts() {
-    echo "Install scripts..."
-    mkdir -p "$HOME/.local/bin"
-    ln -sf "$ROOT_DIR/scripts/"* "$HOME/.local/bin/"
-}
-
-install_system_files() {
-    echo "Install system files..."
-    sudo cp -r "$ROOT_DIR/system/"* /
-}
-
 enable_services() {
-    echo "Enable services..."
+    echo "====> Enable services..."
     sudo systemctl enable sddm
+    sudo systemctl enable libvirtd
 }
 
 main() {
     install_packages
     install_aur
+    change_shell
+    setting_sddm_theme
     link_configs
-    install_scripts
     install_system_files
     enable_services
+    add_user_in_groups
 }
 
 main
