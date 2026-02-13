@@ -14,8 +14,8 @@ install_packages() {
 install_aur() {
     echo "====> Install AUR packages..."
     echo "====> Install yay..."
-    git clone https://aur.archlinux.org/yay.git /tmp/yay && (cd /tmp/yay && makepkg -si)
-    yay -S --needed - < "$DOT_DIR/packages/aur.txt"
+    git clone https://aur.archlinux.org/yay.git /tmp/yay && (cd /tmp/yay && makepkg -si --noconfirm)
+    yay -S --noconfirm --needed - < "$DOT_DIR/packages/aur.txt"
 }
 
 change_shell(){
@@ -23,10 +23,17 @@ change_shell(){
   sudo chsh -s /bin/zsh $(whoami)
 }
 
+set_up_home(){
+  echo "====> Set up home directory..."
+  cp "$DOT_DIR/home/.xinitrc" ~/
+  cp "$DOT_DIR/home/.zshrc"  ~/
+}
+
+# TODO sudo problem
 setting_sddm_theme(){
   echo "====> Set up sddm theme..."
   sudo mkdir -p /etc/sddm.conf.d
-  ln -sf "$DOT_DIR/system/sddm/sddm.conf" "/etc/sddm.conf.d/"
+  cp "$DOT_DIR/system/sddm/sddm.conf" "/etc/sddm.conf.d/"
 }
 
 add_user_in_groups(){
@@ -36,8 +43,9 @@ add_user_in_groups(){
 
 link_configs() {
     echo "====> Link configs..."
-    for dir in "./config/"*; do
+    for dir in "$DOT_DIR/config/"*; do
         name=$(basename "$dir")
+        rm -rf "$HOME/.config/$name"
         ln -sf "$dir" "$HOME/.config/$name"
     done
 }
@@ -54,7 +62,7 @@ main() {
     change_shell
     setting_sddm_theme
     link_configs
-    install_system_files
+    set_up_home
     enable_services
     add_user_in_groups
 }
