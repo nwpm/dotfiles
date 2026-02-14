@@ -16,6 +16,12 @@ install_packages() {
 
 install_aur() {
     echo "${GREEN}====> Install yay${NC}..."
+
+    if [ "$(pacman -Q yay)" ]; then
+      echo "${GREEN}====> Yay is already installed${NC}"
+      return 0
+    fi
+
     git clone https://aur.archlinux.org/yay.git /tmp/yay && (cd /tmp/yay && makepkg -si --noconfirm)
 
     echo "${GREEN}====> Install AUR packages${NC}..."
@@ -23,7 +29,13 @@ install_aur() {
 }
 
 change_shell(){
-  echo "${GREEN}====> Change default shell to zsh${NC}..."
+  echo "${GREEN}====> Install and change default shell to zsh${NC}..."
+
+  if [ "$(pacman -Q zsh)" ]; then
+    echo "${GREEN}====> Zsh is already installed${NC}"
+    return 0
+  fi
+
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   sudo chsh -s /bin/zsh "$(whoami)"
 }
