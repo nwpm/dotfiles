@@ -24,8 +24,6 @@ return {
 				ensure_installed = {
 					"clangd", -- C/C++
 					"clang-format", -- C/C++ formatter
-					"asm-lsp", -- ASM
-					"asmfmt", -- ASM formatter
 					"rust-analyzer", -- Rust
 					"stylua", -- Lua
 					"prettier", -- JS/TS
@@ -57,13 +55,6 @@ return {
 			vim.lsp.config("clangd", {
 				cmd = { "clangd", "--background-index", "--clang-tidy" },
 				filetypes = { "c", "cpp", "objc", "objcpp" },
-				capabilities = capabilities,
-			})
-
-			-- asm
-			vim.lsp.config("asm_lsp", {
-				cmd = { "asm-lsp" },
-				filetypes = { "asm", "s", "S" },
 				capabilities = capabilities,
 			})
 

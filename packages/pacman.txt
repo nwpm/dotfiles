@@ -1,4 +1,6 @@
 alacritty
+arandr
+autorandr
 amd-ucode
 base
 base-devel
@@ -53,8 +55,10 @@ ntfs-3g
 nvidia-dkms
 openbsd-netcat
 os-prober
+papirus-icon-theme
 pavucontrol
 picom
+python-pip
 pipewire
 pipewire-alsa
 pipewire-jack
