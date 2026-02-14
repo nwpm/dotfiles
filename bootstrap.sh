@@ -4,35 +4,34 @@ set -e
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-echo "${GREEN}====> Start setting dotfiles${NC}"
-echo
+printf "%b====> Start setting dotfiles%b\n" "${GREEN}" "${NC}"
 
 DOT_DIR=$(pwd)
 
 install_packages() {
-    echo "${GREEN}====> Install pacman packages${NC}..."
+    printf "%b====> Install pacman packages%b..." "${GREEN}" "${NC}"
     sudo pacman -Syu --needed - < "$DOT_DIR/packages/pacman.txt"
 }
 
 install_aur() {
-    echo "${GREEN}====> Install yay${NC}..."
+    printf "%b====> Install yay%b..." "${GREEN}" "${NC}"
 
     if [ "$(pacman -Q yay)" ]; then
-      echo "${GREEN}====> Yay is already installed${NC}"
+      printf "%b====> Yay is already installed%b" "${GREEN}" "${NC}"
       return 0
     fi
 
     git clone https://aur.archlinux.org/yay.git /tmp/yay && (cd /tmp/yay && makepkg -si --noconfirm)
 
-    echo "${GREEN}====> Install AUR packages${NC}..."
+    printf "%b====> Install AUR packages%b..." "${GREEN}" "${NC}"
     yay -S --noconfirm --needed - < "$DOT_DIR/packages/aur.txt"
 }
 
 change_shell(){
-  echo "${GREEN}====> Install and change default shell to zsh${NC}..."
+  printf "%b====> Install and change default shell to zsh%b..." "${GREEN}" "${NC}"
 
   if [ "$(pacman -Q zsh)" ]; then
-    echo "${GREEN}====> Zsh is already installed${NC}"
+    printf "%b====> Zsh is already installed%b" "${GREEN}" "${NC}"
     return 0
   fi
 
@@ -41,7 +40,7 @@ change_shell(){
 }
 
 set_up_home(){
-  echo "${GREEN}====> Set up home directory${NC}..."
+  printf "%b====> Set up home directory%b..." "${GREEN}" "${NC}"
 
   rm -f "$HOME/.zshrc"
   rm -f "$HOME/.xinitrc"
@@ -53,18 +52,18 @@ set_up_home(){
 }
 
 setting_sddm_theme(){
-  echo "${GREEN}====> Set up sddm theme${NC}..."
+  printf "%b====> Set up sddm theme%b..." "${GREEN}" "${NC}"
   sudo mkdir -p /etc/sddm.conf.d
   cp "$DOT_DIR/system/sddm/sddm.conf" "/etc/sddm.conf.d/"
 }
 
 add_user_in_groups(){
-  echo "${GREEN}====> Add user in groups${NC}..."
+  printf "%b====> Add user in groups%b..." "${GREEN}" "${NC}"
   sudo usermod -aG libvirt "$(whoami)"
 }
 
 link_configs() {
-    echo "${GREEN}====> Link configs${NC}..."
+    printf "%b====> Link configs%b..." "${GREEN}" "${NC}"
     for dir in "$DOT_DIR/config/"*; do
         name=$(basename "$dir")
         rm -rf "$HOME/.config/$name"
@@ -73,13 +72,13 @@ link_configs() {
 }
 
 enable_services() {
-    echo "${GREEN}====> Enable services${NC}..."
+    printf "%b====> Enable services%b..." "${GREEN}" "${NC}"
     sudo systemctl enable sddm
     sudo systemctl enable libvirtd
 }
 
 set_up_languages(){
-    echo "${GREEN}====> Set up languages${NC}..."
+    printf "%b====> Set up languages%b..." "${GREEN}" "${NC}"
 
     sudo sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
     sudo sed -i 's/#ru_RU.UTF-8 UTF-8/ru_RU.UTF-8 UTF-8/' /etc/locale.gen
@@ -99,9 +98,7 @@ main() {
     add_user_in_groups
     set_up_languages
 
-    echo
-    echo "DONE! The system is configured."
-    echo
+    printf "DONE! The system is configured.\n"
 }
 
 main
